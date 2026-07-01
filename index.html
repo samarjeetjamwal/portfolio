@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samarjeet Jamwal — Job Alignment Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --teal-dark:#0B3B3C;
+    --teal:#12514E;
+    --teal-soft:#E4EDEA;
+    --gold:#C9973A;
+    --gold-light:#E7BC72;
+    --sage:#7FA88F;
+    --coral:#D97D54;
+    --cream:#FBF7EF;
+    --cream-2:#F2EBDA;
+    --ink:#1E2A28;
+    --ink-soft:#51625D;
+    --line:rgba(11,59,60,0.16);
+    --shadow: 0 12px 30px rgba(11,59,60,0.10);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  h1,h2,h3,.display{font-family:'Fraunces',serif;}
+
+  a{color:inherit;}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 40px;}
+  @media(max-width:700px){.wrap{padding:0 22px;}}
+
+  /* ---------- Ledger texture backdrop ---------- */
+  .ledger-lines{
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 37px,
+      rgba(11,59,60,0.05) 38px
+    );
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    background:
+      radial-gradient(circle at 85% -10%, rgba(201,151,58,0.28), transparent 45%),
+      linear-gradient(160deg, var(--teal-dark) 0%, var(--teal) 78%);
+    color:#F6F1E4;
+    padding:64px 0 58px;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 90px);
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    font-size:12px;
+    color:var(--gold-light);
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--gold-light);display:inline-block;}
+
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.55fr 0.9fr;
+    gap:48px;
+    align-items:center;
+  }
+  @media(max-width:860px){ .hero-grid{grid-template-columns:1fr; gap:36px;} }
+
+  .hero h1{
+    font-size:clamp(34px,5vw,54px);
+    line-height:1.05;
+    margin:0 0 6px;
+    font-weight:600;
+    color:#FBF7EF;
+  }
+  .hero h1 em{font-style:italic;color:var(--gold-light);font-weight:500;}
+  .hero .role-line{
+    font-size:16px;
+    color:var(--gold-light);
+    margin:0 0 22px;
+    font-weight:600;
+    letter-spacing:.02em;
+  }
+  .hero p.lede{
+    font-size:16.5px;
+    line-height:1.75;
+    color:#DCE7E1;
+    max-width:56ch;
+    margin:0 0 30px;
+  }
+  .hero-contact{
+    display:flex; flex-wrap:wrap; gap:10px 22px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:#C9DAD3;
+  }
+  .hero-contact span{display:flex;align-items:center;gap:8px;}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);display:inline-block;}
+
+  /* stat strip */
+  .stat-strip{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    margin-top:38px;
+    border-top:1px solid rgba(246,241,228,0.18);
+    padding-top:22px;
+  }
+  .stat-strip div{border-left:1px solid rgba(246,241,228,0.18);padding-left:16px;}
+  .stat-strip div:first-child{border-left:none;padding-left:0;}
+  .stat-num{font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--gold-light);font-weight:600;}
+  .stat-label{font-size:11.5px;color:#B9CCC3;text-transform:uppercase;letter-spacing:.06em;margin-top:4px;}
+  @media(max-width:600px){.stat-strip{grid-template-columns:repeat(2,1fr);row-gap:20px;}}
+
+  /* ---------- SEAL ---------- */
+  .seal-holder{display:flex;justify-content:center;}
+  .seal{
+    width:230px;height:230px;
+    border-radius:50%;
+    border:2px solid var(--gold-light);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+    background: radial-gradient(circle at 40% 30%, rgba(231,188,114,0.12), transparent 70%);
+    animation: seal-in 900ms ease-out;
+  }
+  .seal::before{
+    content:"";
+    position:absolute; inset:12px;
+    border:1px dashed rgba(231,188,114,0.55);
+    border-radius:50%;
+  }
+  .seal-inner{text-align:center;}
+  .seal-inner .sj{
+    font-family:'Fraunces',serif; font-size:46px; color:#F6F1E4; font-weight:600; line-height:1;
+  }
+  .seal-inner .sub{
+    font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.14em;
+    color:var(--gold-light); text-transform:uppercase; margin-top:8px;
+  }
+  @keyframes seal-in{from{opacity:0;transform:scale(.85) rotate(-6deg);}to{opacity:1;transform:scale(1) rotate(-6deg);}}
+  .seal{transform:rotate(-6deg);}
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding:70px 0;}
+  .sec-head{margin-bottom:40px;max-width:70ch;}
+  .sec-tag{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--teal); font-weight:600;
+    display:flex;align-items:center;gap:10px;margin-bottom:12px;
+  }
+  .sec-tag::before{content:"";width:26px;height:1px;background:var(--gold);display:inline-block;}
+  .sec-head h2{font-size:clamp(26px,3.4vw,36px);margin:0 0 12px;color:var(--teal-dark);font-weight:600;}
+  .sec-head p{color:var(--ink-soft);line-height:1.7;font-size:15.5px;margin:0;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--cream-2);}
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:start;}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;}}
+  .about p{line-height:1.85;font-size:16px;color:var(--ink);margin:0 0 18px;}
+  .about p:first-of-type::first-letter{
+    font-family:'Fraunces',serif; font-size:52px; float:left; line-height:.8; padding:6px 8px 0 0; color:var(--gold); font-weight:600;
+  }
+  .lang-box{background:#fff;border:1px solid var(--line);border-radius:4px;padding:26px 28px;box-shadow:var(--shadow);}
+  .lang-box h3{font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--teal-dark);margin:0 0 16px;font-family:'Inter',sans-serif;font-weight:700;}
+  .lang-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14.5px;}
+  .lang-row:last-child{border-bottom:none;}
+  .lang-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;background:var(--teal-soft);color:var(--teal-dark);padding:3px 9px;border-radius:20px;letter-spacing:.03em;}
+
+  /* ---------- ROUTE MAP (signature element) ---------- */
+  .route{background:var(--teal-dark);color:#F6F1E4;position:relative;overflow:hidden;}
+  .route::before{
+    content:"";position:absolute;inset:0;
+    background-image: radial-gradient(circle at 15% 20%, rgba(201,151,58,0.14), transparent 40%);
+  }
+  .route .sec-tag{color:var(--gold-light);}
+  .route .sec-tag::before{background:var(--gold-light);}
+  .route .sec-head h2{color:#FBF7EF;}
+  .route .sec-head p{color:#C9DAD3;}
+
+  .route-line{
+    position:relative; margin-top:50px; padding-top:6px;
+  }
+  .route-track{
+    position:absolute; top:26px; left:0; right:0; height:2px;
+    background:repeating-linear-gradient(to right, var(--gold-light) 0 10px, transparent 10px 18px);
+    z-index:0;
+  }
+  .route-nodes{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;position:relative;z-index:1;}
+  @media(max-width:900px){.route-nodes{grid-template-columns:repeat(3,1fr);row-gap:46px;}}
+  @media(max-width:520px){.route-nodes{grid-template-columns:repeat(2,1fr);}}
+  .rnode{display:flex;flex-direction:column;align-items:center;text-align:center;}
+  .rnode .pin{
+    width:14px;height:14px;border-radius:50%;background:var(--gold-light);
+    border:3px solid var(--teal-dark); box-shadow:0 0 0 2px var(--gold-light);
+    margin-bottom:14px;
+  }
+  .rnode .yr{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gold-light);letter-spacing:.05em;}
+  .rnode .place{font-weight:700;font-size:14.5px;margin:5px 0 3px;color:#FBF7EF;}
+  .rnode .co{font-size:12px;color:#B9CCC3;line-height:1.4;}
+
+  /* ---------- ROLE ALIGNMENT ---------- */
+  .roles{background:var(--cream);}
+  .role-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;}
+  @media(max-width:860px){.role-grid{grid-template-columns:1fr;}}
+
+  .role-card{
+    background:#fff;border:1px solid var(--line);border-radius:6px;
+    padding:30px 30px 26px;box-shadow:var(--shadow);
+    position:relative; overflow:hidden;
+  }
+  .role-card::before{
+    content:"";position:absolute;top:0;left:0;bottom:0;width:5px;
+    background:linear-gradient(to bottom,var(--gold),var(--sage));
+  }
+  .role-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:6px;}
+  .role-title{font-family:'Fraunces',serif;font-size:21px;font-weight:600;color:var(--teal-dark);margin:0;}
+  .role-num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:.05em;text-transform:uppercase;}
+
+  .fit-wrap{margin:16px 0 18px;}
+  .fit-label{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);margin-bottom:6px;letter-spacing:.03em;text-transform:uppercase;}
+  .fit-track{height:7px;border-radius:4px;background:var(--cream-2);overflow:hidden;position:relative;}
+  .fit-fill{height:100%;border-radius:4px;background:linear-gradient(to right,var(--sage),var(--gold));}
+
+  .role-card p.hook{font-size:14.5px;color:var(--ink-soft);line-height:1.65;margin:0 0 16px;font-style:italic;border-left:2px solid var(--cream-2);padding-left:14px;}
+
+  .role-card ul{margin:0 0 18px;padding:0;list-style:none;}
+  .role-card ul li{
+    font-size:14px; color:var(--ink); line-height:1.6; padding-left:20px; position:relative; margin-bottom:9px;
+  }
+  .role-card ul li::before{
+    content:"✓"; position:absolute; left:0; top:0; color:var(--teal); font-weight:700; font-size:12px;
+  }
+  .tagset{display:flex;flex-wrap:wrap;gap:7px;}
+  .tagset span{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; background:var(--teal-soft); color:var(--teal-dark);
+    padding:4px 9px; border-radius:3px; letter-spacing:.02em;
+  }
+
+  /* ---------- AI SPOTLIGHT ---------- */
+  .ai-spot{
+    background: linear-gradient(150deg, var(--teal-dark), #16413E 55%, var(--coral) 165%);
+    color:#F6F1E4; position:relative; overflow:hidden;
+  }
+  .ai-spot::before{
+    content:"";position:absolute;top:-100px;right:-100px;width:340px;height:340px;border-radius:50%;
+    background:radial-gradient(circle, rgba(231,188,114,0.25), transparent 70%);
+  }
+  .ai-spot .sec-tag{color:var(--gold-light);}
+  .ai-spot .sec-tag::before{background:var(--gold-light);}
+  .ai-spot .sec-head h2{color:#FBF7EF;}
+  .ai-spot .sec-head p{color:#DCE7E1;}
+
+  .ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start;}
+  @media(max-width:860px){.ai-grid{grid-template-columns:1fr;}}
+
+  .ai-grid p{line-height:1.8;font-size:15.5px;color:#DCE7E1;margin:0 0 16px;}
+  .ai-quote{
+    border-left:2px solid var(--gold-light); padding-left:18px; font-family:'Fraunces',serif;
+    font-style:italic; font-size:18px; color:#F6F1E4; margin:22px 0; line-height:1.55;
+  }
+
+  .ai-uses{list-style:none;margin:0 0 26px;padding:0;}
+  .ai-uses li{
+    font-size:14.5px; padding:12px 0; border-bottom:1px solid rgba(246,241,228,0.16);
+    display:flex; gap:12px; align-items:flex-start; color:#EAF1EC;
+  }
+  .ai-uses li .n{font-family:'IBM Plex Mono',monospace;color:var(--gold-light);font-weight:600;min-width:22px;}
+
+  .badge-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+  .badge{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:500;
+    padding:9px 16px; border-radius:20px; border:1px solid rgba(231,188,114,0.5);
+    color:#F6F1E4; background:rgba(255,255,255,0.05);
+  }
+
+  /* ---------- COMPETENCY CLOUD ---------- */
+  .comp{background:var(--cream-2);}
+  .comp-cloud{display:flex;flex-wrap:wrap;gap:11px;}
+  .comp-cloud span{
+    background:#fff; border:1px solid var(--line); padding:9px 16px; border-radius:4px;
+    font-size:13.5px; color:var(--teal-dark); font-weight:600; box-shadow:0 2px 6px rgba(11,59,60,0.05);
+  }
+
+  /* ---------- FOOTER STRIP: systems / education ---------- */
+  .footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;}
+  @media(max-width:860px){.footer-grid{grid-template-columns:1fr;}}
+  .fcard{background:#fff;border:1px solid var(--line);border-radius:6px;padding:26px 26px;box-shadow:var(--shadow);}
+  .fcard h3{font-size:13px;text-transform:uppercase;letter-spacing:.09em;color:var(--gold);margin:0 0 16px;font-family:'IBM Plex Mono',monospace;font-weight:600;}
+  .fcard .row{padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px;color:var(--ink);}
+  .fcard .row:last-child{border-bottom:none;}
+  .fcard .row b{display:block;color:var(--teal-dark);font-size:14.5px;margin-bottom:2px;}
+  .fcard .row span{color:var(--ink-soft);font-size:12.5px;}
+
+  /* ---------- CTA FOOTER ---------- */
+  footer.cta{
+    background:var(--teal-dark); color:#F6F1E4; padding:56px 0 40px; text-align:center;
+  }
+  footer.cta h2{font-size:clamp(24px,3vw,32px);margin:0 0 14px;color:#FBF7EF;}
+  footer.cta p{color:#C9DAD3;font-size:15px;margin:0 0 26px;}
+  .cta-contact{
+    display:inline-flex; flex-wrap:wrap; justify-content:center; gap:22px;
+    font-family:'IBM Plex Mono',monospace; font-size:13.5px; color:var(--gold-light);
+  }
+  footer.cta .bottom-line{
+    margin-top:40px; padding-top:22px; border-top:1px solid rgba(246,241,228,0.15);
+    font-size:11.5px; color:#8FA69D; letter-spacing:.03em;
+  }
+
+  ::selection{background:var(--gold-light);color:var(--teal-dark);}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Job Alignment Portfolio</div>
+      <h1>Samarjeet Jamwal<br><em>Finance, Credit Control &amp; Commercial Leadership</em></h1>
+      <p class="role-line">Credit Controller · Accounts Manager · Branch / Regional Operations · Depot &amp; Logistics · Commercial Manager · AI‑Automated MIS</p>
+      <p class="lede">I've spent twenty years making receivables collectible, operations leaner, and numbers trustworthy — across India, Kenya and Ghana. This is a working map of where that experience lines up hardest with the roles I'm looking at next, built the way I build everything: with evidence, not adjectives.</p>
+      <div class="hero-contact">
+        <span><span class="dot"></span>Chandigarh, India</span>
+        <span><span class="dot"></span>+91 93179 50702</span>
+        <span><span class="dot"></span>samarjeetjamwal@gmail.com</span>
+      </div>
+      <div class="stat-strip">
+        <div><div class="stat-num">20+</div><div class="stat-label">Years, Finance &amp; Commercial</div></div>
+        <div><div class="stat-num">3</div><div class="stat-label">Countries — India, Kenya, Ghana</div></div>
+        <div><div class="stat-num">15–20%</div><div class="stat-label">Procurement Cost Savings</div></div>
+        <div><div class="stat-num">135+</div><div class="stat-label">Franchise Accounts Managed</div></div>
+      </div>
+    </div>
+    <div class="seal-holder">
+      <div class="seal">
+        <div class="seal-inner">
+          <div class="sj">SJ</div>
+          <div class="sub">Finance · Credit · Commercial</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="sec-tag">Personal Summary</div>
+      <h2 style="font-family:'Fraunces',serif;font-size:28px;color:var(--teal-dark);margin:0 0 20px;">In my own words</h2>
+      <p>I'm a finance and commercial professional who has spent two decades inside the machinery of Accounts Receivable, Credit Control, Order-to-Cash, and Commercial Operations — first in India, then across Kenya and Ghana. What I bring isn't theory; it's the muscle memory of closing an aging book, negotiating a supplier down 15–20%, and getting a delivery fleet 15% faster, all in the same career.</p>
+      <p>Along the way I picked up logistics, procurement, contract management and statutory compliance almost by necessity — the businesses I worked for needed one person who could hold finance and operations together, and I became that person. More recently, I've added something my earlier resumes didn't have: I use AI tools like Claude, Grok and DeepSeek as working partners to turn raw ERP exports into decision-ready MIS, faster than a spreadsheet ever could alone.</p>
+      <p>What follows is how I see my own fit — role by role, evidence first.</p>
+    </div>
+    <div class="lang-box">
+      <h3>Languages &amp; Reach</h3>
+      <div class="lang-row"><span>English</span><span class="lang-tag">Professional</span></div>
+      <div class="lang-row"><span>Hindi</span><span class="lang-tag">Native</span></div>
+      <div class="lang-row"><span>Swahili</span><span class="lang-tag">Professional</span></div>
+      <h3 style="margin-top:22px;">Systems I Work In</h3>
+      <div class="lang-row"><span>SAP / Tally ERP</span><span class="lang-tag">Daily</span></div>
+      <div class="lang-row"><span>Wiza / Techsmith / Vesta</span><span class="lang-tag">Working</span></div>
+      <div class="lang-row"><span>Advanced Excel</span><span class="lang-tag">Expert</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="route">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Career Route</div>
+      <h2>Twenty years, mapped like a supply chain</h2>
+      <p>Given how much of my career has involved moving goods, cash and people across borders, it felt right to lay my own path out the same way — as a route, not just a list.</p>
+    </div>
+    <div class="route-line">
+      <div class="route-track"></div>
+      <div class="route-nodes">
+        <div class="rnode"><div class="pin"></div><div class="yr">2000–2004</div><div class="place">Rampur, India</div><div class="co">Nathpa Jhakri JV — Account Executive</div></div>
+        <div class="rnode"><div class="pin"></div><div class="yr">2004–2010</div><div class="place">Gurgaon, India</div><div class="co">Koutons Retail — Sr. Executive, Accounts &amp; Commercial</div></div>
+        <div class="rnode"><div class="pin"></div><div class="yr">2010–2015</div><div class="place">Gurgaon, India</div><div class="co">Faces Cosmetics — Asst. Manager, Accounts Receivable</div></div>
+        <div class="rnode"><div class="pin"></div><div class="yr">2015</div><div class="place">Accra, Ghana</div><div class="co">Hiralco Limited — Manager, Finance &amp; Commercial</div></div>
+        <div class="rnode"><div class="pin"></div><div class="yr">2015–2023</div><div class="place">Nairobi, Kenya</div><div class="co">RJ Corp / Devyani — Manager, Credit Control &amp; Logistics</div></div>
+        <div class="rnode"><div class="pin"></div><div class="yr">2023–Now</div><div class="place">Manali, India</div><div class="co">TSI Architects &amp; Engineers — Sr. Manager, Accounts &amp; Commercial</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="roles">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Role Alignment</div>
+      <h2>Where my experience fits — and how well</h2>
+      <p>I've scored my own alignment honestly against each role, the way I'd assess a customer's credit risk: on evidence, trend, and track record — not optimism.</p>
+    </div>
+
+    <div class="role-grid">
+
+      <!-- Credit Controller -->
+      <div class="role-card">
+        <div class="role-top">
+          <h3 class="role-title">Credit Controller</h3>
+          <span class="role-num">Fit · 01</span>
+        </div>
+        <div class="fit-wrap">
+          <div class="fit-label"><span>Alignment</span><span>98%</span></div>
+          <div class="fit-track"><div class="fit-fill" style="width:98%;"></div></div>
+        </div>
+        <p class="hook">This is the role I've quite literally done, full-time, for eight years in Nairobi — not adjacent to it.</p>
+        <ul>
+          <li>Owned the full Accounts Receivable and Order-to-Cash cycle for a multi-market FMCG business</li>
+          <li>Rebuilt collections forecasting and aging-analysis discipline to bring down overdue receivables</li>
+          <li>Resolved billing disputes while protecting the customer relationship behind them</li>
+          <li>Wrote the AR policies and internal controls the credit function still runs on</li>
+        </ul>
+        <div class="tagset"><span>AR Management</span><span>O2C</span><span>Debt Recovery</span><span>Aging Analysis</span></div>
+      </div>
+
+      <!-- Accounts Manager -->
+      <div class="role-card">
+        <div class="role-top">
+          <h3 class="role-title">Accounts Manager</h3>
+          <span class="role-num">Fit · 02</span>
+        </div>
+        <div class="fit-wrap">
+          <div class="fit-label"><span>Alignment</span><span>95%</span></div>
+          <div class="fit-track"><div class="fit-fill" style="width:95%;"></div></div>
+        </div>
+        <p class="hook">I've run both sides of the ledger at once — receivable and payable — and reconciled accounts other people were afraid to touch.</p>
+        <ul>
+          <li>Managed AR and AP together across multiple regions without either side slipping</li>
+          <li>Produced aging reports, bank reconciliations and management packs leadership actually relied on</li>
+          <li>Reconciled 135+ franchise store accounts, escrow accounts and bank guarantees with zero drama</li>
+          <li>Cut bad-debt exposure through credit monitoring, before it became a write-off conversation</li>
+        </ul>
+        <div class="tagset"><span>AR &amp; AP</span><span>Reconciliation</span><span>MIS Reporting</span><span>Credit Risk</span></div>
+      </div>
+
+      <!-- Branch / Regional Operations Manager -->
+      <div class="role-card">
+        <div class="role-top">
+          <h3 class="role-title">Branch / Regional Operations Manager</h3>
+          <span class="role-num">Fit · 03</span>
+        </div>
+        <div class="fit-wrap">
+          <div class="fit-label"><span>Alignment</span><span>90%</span></div>
+          <div class="fit-track"><div class="fit-fill" style="width:90%;"></div></div>
+        </div>
+        <p class="hook">I've been the single point of accountability for finance, credit and logistics across an entire country operation — that's a branch role by any other name.</p>
+        <ul>
+          <li>Held end-to-end finance, credit and logistics accountability for a Kenya-wide operation</li>
+          <li>Assessed viability for 135+ franchise stores, shaping real expansion and closure calls</li>
+          <li>Built the cross-team relationships — Sales, Finance, Operations — that keep a network moving as one</li>
+          <li>Comfortable being the finance face of the business to banks, auditors and regulators</li>
+        </ul>
+        <div class="tagset"><span>P&amp;L Ownership</span><span>Stakeholder Mgmt</span><span>Team Leadership</span><span>Compliance</span></div>
+      </div>
+
+      <!-- Depot / Logistics Operations -->
+      <div class="role-card">
+        <div class="role-top">
+          <h3 class="role-title">Depot &amp; Logistics Operations</h3>
+          <span class="role-num">Fit · 04</span>
+        </div>
+        <div class="fit-wrap">
+          <div class="fit-label"><span>Alignment</span><span>88%</span></div>
+          <div class="fit-track"><div class="fit-fill" style="width:88%;"></div></div>
+        </div>
+        <p class="hook">Credit Control and Logistics reported to me together for seven years — the numbers below are what happens when cash flow and product flow are managed by the same person.</p>
+        <ul>
+          <li>Carried joint accountability for receivables and logistics operations across Kenya</li>
+          <li>Cut delivery turnaround time by 15% through route and dispatch optimization</li>
+          <li>Reduced logistics costs by roughly 10% without touching service levels</li>
+          <li>Kept inventory controls and supply coordination in step with the AR book, not separate from it</li>
+        </ul>
+        <div class="tagset"><span>Route Optimization</span><span>Supply Chain</span><span>Inventory Control</span><span>Cost Reduction</span></div>
+      </div>
+
+      <!-- Commercial Manager -->
+      <div class="role-card">
+        <div class="role-top">
+          <h3 class="role-title">Commercial Manager</h3>
+          <span class="role-num">Fit · 05</span>
+        </div>
+        <div class="fit-wrap">
+          <div class="fit-label"><span>Alignment</span><span>96%</span></div>
+          <div class="fit-track"><div class="fit-fill" style="width:96%;"></div></div>
+        </div>
+        <p class="hook">This is the seat I currently sit in — procurement, contracts and vendor strategy for live, large-scale projects.</p>
+        <ul>
+          <li>Lead commercial and financial operations for large-scale construction projects, right now</li>
+          <li>Delivered 15–20% procurement savings through strategic sourcing and negotiation</li>
+          <li>Own contract administration, keeping project budgets aligned to commercial terms</li>
+          <li>Manage vendor relationships and SLA compliance from negotiation through to delivery</li>
+        </ul>
+        <div class="tagset"><span>Procurement</span><span>Contract Mgmt</span><span>Vendor Negotiation</span><span>Budget Control</span></div>
+      </div>
+
+      <!-- Bonus: Finance & Compliance / Country Manager -->
+      <div class="role-card">
+        <div class="role-top">
+          <h3 class="role-title">Country Finance &amp; Compliance Manager</h3>
+          <span class="role-num">Fit · 06</span>
+        </div>
+        <div class="fit-wrap">
+          <div class="fit-label"><span>Alignment</span><span>85%</span></div>
+          <div class="fit-track"><div class="fit-fill" style="width:85%;"></div></div>
+        </div>
+        <p class="hook">A role I don't always lead with, but one I've genuinely done — running the full finance function for two countries at once.</p>
+        <ul>
+          <li>Managed finance and accounting operations across Ghana and Nigeria concurrently</li>
+          <li>Owned statutory compliance — VAT accuracy, tax filings and audit readiness</li>
+          <li>Delivered variance analysis and management reporting senior leadership acted on</li>
+          <li>Managed fixed assets, inventory controls and banking relationships end-to-end</li>
+        </ul>
+        <div class="tagset"><span>Statutory Compliance</span><span>Audit</span><span>Budgeting</span><span>Banking</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="ai-spot">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Specialization</div>
+      <h2>AI-Automated MIS — the newest tool in a finance career</h2>
+      <p>The fundamentals of MIS haven't changed. How fast I can produce it has.</p>
+    </div>
+    <div class="ai-grid">
+      <div>
+        <p>For most of my career, MIS meant hours inside Excel — pivot tables, VLOOKUPs, manually rebuilding the same aging report every week. Over the last couple of years I've rebuilt that workflow around AI, and it's changed how quickly I can turn raw ERP data into something a CFO can actually act on.</p>
+        <p class="ai-quote">"I don't ask AI to replace my judgement on the numbers — I ask it to remove the hours I used to spend formatting them."</p>
+        <p>I now treat tools like Claude, Grok and DeepSeek as reasoning partners for variance narratives, collection strategy options and cost-scenario modelling, and I use lightweight automation platforms to prototype internal tools that used to require a developer's time I didn't have.</p>
+      </div>
+      <div>
+        <ul class="ai-uses">
+          <li><span class="n">01</span>Convert raw SAP / Tally / ERP exports into decision-ready dashboards through AI-guided workflows, not manual pivoting</li>
+          <li><span class="n">02</span>Use Claude, Grok and DeepSeek as reasoning partners for aging analysis, collection strategy and variance narratives</li>
+          <li><span class="n">03</span>Prototype small internal reporting tools using GitHub and Lovable AI, without waiting on a dev queue</li>
+          <li><span class="n">04</span>Run Microsoft 365 Copilot inside the everyday reporting cadence to cut report-prep time meaningfully</li>
+        </ul>
+        <div class="badge-grid">
+          <span class="badge">AI-Automated MIS</span>
+          <span class="badge">Claude</span>
+          <span class="badge">Grok</span>
+          <span class="badge">DeepSeek</span>
+          <span class="badge">GitHub</span>
+          <span class="badge">Lovable AI</span>
+          <span class="badge">MS 365 Copilot</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="comp">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Core Competencies</div>
+      <h2>The full toolkit behind every role above</h2>
+    </div>
+    <div class="comp-cloud">
+      <span>Accounts Receivable Management</span>
+      <span>Credit Control &amp; Debt Recovery</span>
+      <span>Order-to-Cash (O2C)</span>
+      <span>Working Capital Management</span>
+      <span>Cash Flow Forecasting</span>
+      <span>Commercial Operations</span>
+      <span>Financial Reporting &amp; MIS</span>
+      <span>Budgeting &amp; Forecasting</span>
+      <span>Procurement &amp; Vendor Management</span>
+      <span>Logistics &amp; Supply Chain Coordination</span>
+      <span>Contract Management</span>
+      <span>Internal Controls &amp; Compliance</span>
+      <span>Audit Coordination</span>
+      <span>Team Leadership</span>
+      <span>Stakeholder Management</span>
+      <span>Business Process Improvement</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap footer-grid">
+    <div class="fcard">
+      <h3>Education</h3>
+      <div class="row"><b>MBA — Finance</b><span>School of Management Studies, Maidan Garhi · 2005</span></div>
+      <div class="row"><b>M.Com</b><span>Vallabh Govt. P.G. College, Summer Hill · 1999</span></div>
+      <div class="row"><b>B.Sc — Mathematics</b><span>M.L.S.M. College, Sundernagar · 1996</span></div>
+    </div>
+    <div class="fcard">
+      <h3>Certification</h3>
+      <div class="row"><b>Advanced Computer Accounts</b><span>Certificate Course</span></div>
+      <div class="row"><b>AI-Assisted Reporting &amp; Automation</b><span>Self-directed, applied in current role</span></div>
+    </div>
+    <div class="fcard">
+      <h3>Why I'm confident here</h3>
+      <div class="row"><b>20+ years, one throughline</b><span>Finance, credit and commercial — never scattered, always connected</span></div>
+      <div class="row"><b>Three markets, one standard</b><span>India, Kenya and Ghana — the same discipline, wherever I've worked</span></div>
+    </div>
+  </div>
+</section>
+
+<footer class="cta">
+  <div class="wrap">
+    <h2>Let's talk about where I fit next.</h2>
+    <p>I'm happy to walk through any of the roles above in more detail, or discuss one that isn't listed here yet.</p>
+    <div class="cta-contact">
+      <span>samarjeetjamwal@gmail.com</span>
+      <span>+91 93179 50702</span>
+      <span>Chandigarh, India</span>
+    </div>
+    <div class="bottom-line">Samarjeet Jamwal — Job Alignment Portfolio · References available upon request</div>
+  </div>
+</footer>
+
+</body>
+</html>
